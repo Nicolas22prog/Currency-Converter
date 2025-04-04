@@ -5,9 +5,9 @@ const app = express();
 const port = 3000;
 const apiKey = '9e26dbf503a64692956747dfabb296ff'; 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'currency-converter-frontend')));
+app.use(express.static(path.join(__dirname, 'new-frontend')));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'currency-converter-frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, 'new-frontend', 'index.html'));
 });
 app.post('/convert', async (req, res) => {
   const { amount, fromCurrency, toCurrency } = req.body;
