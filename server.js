@@ -3,7 +3,7 @@ const axios = require('axios');
 const path = require('path');
 const app = express();
 const port = 3000;
-const apiKey = '9e26dbf503a64692956747dfabb296ff'; // Substitua por sua chave real
+const apiKey = '9e26dbf503a64692956747dfabb296ff'; 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
