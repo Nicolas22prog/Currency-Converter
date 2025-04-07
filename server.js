@@ -14,9 +14,12 @@ app.post('/convert', async (req, res) => {
   try {
     const response = await axios.get(`https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${apiKey}`);
     const rates = response.data.rates;
-    const exchangeRate = rates[toCurrency];
-    if (exchangeRate) {
-      const convertedAmount = (amount * exchangeRate).toFixed(2);
+    const fromRate = parseFloat(rates[fromCurrency]);
+    const toRate = parseFloat(rates[toCurrency]);
+
+    if (fromRate && toRate) {
+      const usdAmount = amount / fromRate;
+      const convertedAmount = (usdAmount * toRate).toFixed(2);
       res.json({ amount, fromCurrency, toCurrency, convertedAmount });
     } else {
       res.status(400).json({ error: 'Código de moeda inválido' });
